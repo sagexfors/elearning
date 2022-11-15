@@ -1,5 +1,5 @@
 <h2>Create Subject:</h2>
-<%= form_with model: [ @subject, @subject.lessons.build ] do |form| %>
+<%= form_with model: subject do |form| %>
   <p>
     <%= form.label :name %><br>
     <%= form.text_field :name %>
@@ -7,10 +7,6 @@
   <p>
     <%= form.label :description %><br>
     <%= form.text_area :description %>
-  </p>
-  <p>
-    <%= form.label :url %><br>
-    <%= form.text_area :url %>
   </p>
   <p>
     <%= form.submit %>
