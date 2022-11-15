@@ -1,0 +1,8 @@
+<h1><%= @subject.name %></h1>
+<h2>Lessons</h2>
+<ul>
+  <% @subject.lessons.each do |lesson|%>
+    <li><%= lesson.name %></li>
+    <li><%= lesson.description %></li>
+  <% end %>
+</ul>
