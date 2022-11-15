@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_15_142547) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_15_143801) do
   create_table "lessons", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.integer "subject_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "url"
     t.index ["subject_id"], name: "index_lessons_on_subject_id"
   end
 
