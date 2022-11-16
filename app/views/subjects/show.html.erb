@@ -1,10 +1,17 @@
 <h1><%= @subject.name %></h1>
 <h2>Lessons</h2>
-<ul>
+<div class="row row-cols-4">
   <% @subject.lessons.each do |lesson|%>
-    <li><%= lesson.name %></li>
-    <li><%= lesson.description %></li>
-    <li><%= lesson.url %></li>
+    <div class="col">
+      <div class="card border-primary mb-3" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= lesson.name %></h5>
+          <p class="card-text"><%= lesson.description %></p>
+          <%=link_to lesson.url, lesson.url%>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
+<br>
 <%= render "lessons/form", subject: @subject%>
