@@ -9,12 +9,11 @@ class SubjectsController < ApplicationController
   end
 
   def create
-    @subject = Subject.new(subject_params)
+    @user = current_user
+    @subject = @user.subjects.build(subject_params)
 
     if @subject.save
       redirect_to subjects_path
-    # else
-    #   render :new, status: :unprocessable_entity
     end
   end
   private

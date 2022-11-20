@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   resources :subjects do
     resources :lessons
   end
+
+  resources :users do
+    resources :subjects
+  end
 end
