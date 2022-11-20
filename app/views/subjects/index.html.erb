@@ -1,8 +1,12 @@
 <div class="container">
   <h1>Subjects</h1>
   <ul class="list-group list-group-flush">
-    <% @subjects.each do |subject|%>
-      <li class="list-group-item"><%=link_to subject.name, subject%></li>
+    <% if @subjects.exists? %>
+      <% @subjects.each do |subject|%>
+        <li class="list-group-item"><%=link_to subject.name, subject%></li>
+      <% end %>
+    <% else %>
+      <li class="list-group-item">No subjects found</li>
     <% end %>
   </ul>
   <br>
