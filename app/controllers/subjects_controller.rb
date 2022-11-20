@@ -13,8 +13,8 @@ class SubjectsController < ApplicationController
 
     if @subject.save
       redirect_to subjects_path
-    else
-      render :new, status: :unprocessable_entity
+    # else
+    #   render :new, status: :unprocessable_entity
     end
   end
   private
