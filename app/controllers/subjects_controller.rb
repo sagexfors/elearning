@@ -1,6 +1,7 @@
 class SubjectsController < ApplicationController
   def index
-    @subjects = Subject.all
+    @user = current_user
+    @subjects = @user.subjects
     @subject = Subject.new
   end
 
