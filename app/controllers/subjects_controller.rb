@@ -1,4 +1,5 @@
 class SubjectsController < ApplicationController
+  layout "dashboards"
   def index
     @user = current_user
     @subjects = @user.subjects
