@@ -18,6 +18,25 @@
       <p>No lessons found</p>
     <% end %>
   </div>
+  <h2>Activities</h2>
+  <div class="row row-cols-4">
+    <% if @subject.activities.exists? %>
+      <% @subject.activities.each do |activity|%>
+        <div class="col">
+          <div class="card border-primary mb-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title"><%= activity.name %></h5>
+              <p class="card-text"><%= activity.description %></p>
+              <%=link_to activity.url, activity.url%>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p>No activities found</p>
+    <% end %>
+  </div>
   <br>
   <%= render "lessons/form", subject: @subject%>
+  <%= render "activities/form", subject: @subject%>
 </div>
