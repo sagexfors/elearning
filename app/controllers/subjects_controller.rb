@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class SubjectsController < ApplicationController
-  layout "dashboards"
+  layout 'dashboards'
   def index
     @user = current_user
     @subjects = @user.subjects
@@ -14,10 +16,9 @@ class SubjectsController < ApplicationController
     @user = current_user
     @subject = @user.subjects.build(subject_params)
 
-    if @subject.save
-      redirect_to subjects_path
-    end
+    redirect_to subjects_path if @subject.save
   end
+
   private
 
   def subject_params

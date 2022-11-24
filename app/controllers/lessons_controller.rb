@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LessonsController < ApplicationController
   def create
     @subject = Subject.find(params[:subject_id])
@@ -6,6 +8,7 @@ class LessonsController < ApplicationController
   end
 
   private
+
   def lesson_params
     params.require(:lesson).permit(:name, :description, :url)
   end

@@ -1,21 +1,23 @@
-<h1><%= @subject.name %></h1>
-<h2>Lessons</h2>
-<div class="row row-cols-4">
-  <% if @subject.lessons.exists? %>
-    <% @subject.lessons.each do |lesson|%>
-      <div class="col">
-        <div class="card border-primary mb-3" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title"><%= lesson.name %></h5>
-            <p class="card-text"><%= lesson.description %></p>
-            <%=link_to lesson.url, lesson.url%>
+<div class="container">
+  <h1><%= @subject.name %></h1>
+  <h2>Lessons</h2>
+  <div class="row row-cols-4">
+    <% if @subject.lessons.exists? %>
+      <% @subject.lessons.each do |lesson|%>
+        <div class="col">
+          <div class="card border-primary mb-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title"><%= lesson.name %></h5>
+              <p class="card-text"><%= lesson.description %></p>
+              <%=link_to lesson.url, lesson.url%>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
+    <% else %>
+      <p>No lessons found</p>
     <% end %>
-  <% else %>
-    <p>No lessons found</p>
-  <% end %>
+  </div>
+  <br>
+  <%= render "lessons/form", subject: @subject%>
 </div>
-<br>
-<%= render "lessons/form", subject: @subject%>
