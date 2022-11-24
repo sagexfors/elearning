@@ -1,26 +1,62 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<body class="bg-gradient-primary"  style="background-image: url(<%=image_url('bg.jpg')%>);">
+  <div class="container">
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+      <div class="col-xl-8 col-lg-8 col-md-8">
+        <div class="card o-hidden bg-dark border-0 shadow-lg my-5"style="--bs-bg-opacity: .4;">
+          <div class="card-body p-0 ">
+            <!-- Nested Row within Card Body -->
+            <div class="row justify-content-center">
+              <div class="col-lg-6 ">
+                <div class="p-4">
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <div class="text-center">
+                    <h1 class="h1 text-white fs-1">Welcome Back!</h1>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="text-center">
+                    <h1 class="h3 text-white fs-1">Login</h1>
+                  </div>
+                  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                    <div class="form-group">
+                      <%# f.label :email<br /> %>
+                      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-user", placeholder: "Email"  %>
+                    </div>
+                    <div class="form-group">
+                      <%# f.label :password %><br />
+                      <%= f.password_field :password, autocomplete: "current-password",  class: "form-control form-control-user", placeholder: "Password"  %>
+                    </div>
+                    <% if devise_mapping.rememberable? %>
+                      <div class="field">
+                        <%= f.check_box :remember_me %>
+                        <%= f.label :remember_me %>
+                      </div>
+                    <% end %>
+                    <div class="actions">
+                      <%= f.submit "Log in", class: "btn btn-primary btn-user btn-block"%>
+                    </div>
+                  <% end %>
+                  <hr>
+                  <div class="text-center">
+                    <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+                  </div>
+                  <div class="text-center">
+                    <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+                  </div>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</body>
