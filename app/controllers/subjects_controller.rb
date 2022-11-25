@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class SubjectsController < ApplicationController
+  before_action :authenticate_user!
+
   layout 'dashboards'
   def index
     @user = current_user
@@ -17,6 +19,13 @@ class SubjectsController < ApplicationController
     @subject = @user.subjects.build(subject_params)
 
     redirect_to subjects_path if @subject.save
+  end
+
+
+  def destroy
+    @subject = Subject.find(params[:id])
+    @subject.destroy
+    redirect_to @subject, status: :see_other
   end
 
   private

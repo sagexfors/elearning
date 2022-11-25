@@ -10,8 +10,4 @@ Rails.application.routes.draw do
     resources :lessons
     resources :activities
   end
-
-  resources :users do
-    resources :subjects
-  end
 end

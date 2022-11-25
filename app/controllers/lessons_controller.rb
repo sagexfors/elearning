@@ -7,6 +7,13 @@ class LessonsController < ApplicationController
     redirect_to @subject
   end
 
+  def destroy
+    @subject = Subject.find(params[:subject_id])
+    @lesson = @subject.lessons.find(params[:id])
+    @lesson.destroy
+    redirect_to @subject, status: :see_other
+  end
+
   private
 
   def lesson_params

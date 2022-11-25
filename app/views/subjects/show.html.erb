@@ -10,6 +10,7 @@
               <h5 class="card-title"><%= lesson.name %></h5>
               <p class="card-text"><%= lesson.description %></p>
               <%=link_to lesson.url, lesson.url%>
+              <%= button_to "Delete", [lesson.subject, lesson], class: "btn btn-danger", method: :delete %>
             </div>
           </div>
         </div>
@@ -28,6 +29,8 @@
               <h5 class="card-title"><%= activity.name %></h5>
               <p class="card-text"><%= activity.description %></p>
               <%=link_to activity.url, activity.url%>
+              <br>
+              <%= button_to "Delete", [activity.subject, activity], class: "btn btn-danger", method: :delete %>
             </div>
           </div>
         </div>
