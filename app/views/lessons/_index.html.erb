@@ -1,0 +1,19 @@
+<h2>Lessons</h2>
+<div class="row row-cols-4">
+  <% if subject.lessons.exists? %>
+    <% subject.lessons.each do |lesson|%>
+      <div class="col">
+        <div class="card border-primary mb-3" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title"><%= lesson.name %></h5>
+            <p class="card-text"><%= lesson.description %></p>
+            <%=link_to lesson.url, lesson.url%>
+            <%= button_to "Delete", [lesson.subject, lesson], class: "btn btn-danger", method: :delete %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No lessons found</p>
+  <% end %>
+</div>
