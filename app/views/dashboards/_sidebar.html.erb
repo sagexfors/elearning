@@ -46,9 +46,8 @@
 <!-- Nav Item - Tables -->
 <% if current_user.teacher? || current_user.admin? %>
   <li class="nav-item">
-    <a class="nav-link" href="#">
-      <i class="fas fa-fw fa-table"></i>
-      <span>Students</span></a>
+    <i class="fas fa-fw fa-table"></i>
+    <%=link_to "Students", students_index_path, class: "nav-link" %>
   </li>
 <% end %>
 <li class="nav-item">
