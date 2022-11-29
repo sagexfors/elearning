@@ -44,11 +44,13 @@
     <span>Graph/s</span></a>
 </li>
 <!-- Nav Item - Tables -->
-<li class="nav-item">
-  <a class="nav-link" href="#">
-    <i class="fas fa-fw fa-table"></i>
-    <span>Students</span></a>
-</li>
+<% if current_user.teacher? || current_user.admin? %>
+  <li class="nav-item">
+    <a class="nav-link" href="#">
+      <i class="fas fa-fw fa-table"></i>
+      <span>Students</span></a>
+  </li>
+<% end %>
 <li class="nav-item">
   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFiscalYear"
             aria-expanded="true" aria-controls="collapseFiscalYear">
