@@ -14,6 +14,18 @@ class LessonsController < ApplicationController
     redirect_to @subject, status: :see_other
   end
 
+  def edit
+    @subject = Subject.find(params[:subject_id])
+    @lesson = @subject.lessons.find(params[:id])
+  end
+
+  def update
+    @subject = Subject.find(params[:subject_id])
+    @lesson = @subject.lessons.find(params[:id])
+    @lesson.update(lesson_params)
+    redirect_to @subject, status: :see_other
+  end
+
   private
 
   def lesson_params
