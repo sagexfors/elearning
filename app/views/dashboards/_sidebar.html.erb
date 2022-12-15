@@ -49,7 +49,9 @@
     <%=link_to "Students", students_index_path, class: "nav-link" %>
   </li>
 <% end %>
-<li class="nav-item">
+<%=button_to "Logout", destroy_user_session_path, method: :delete, class: "btn nav-item text-light"%>
+
+<%# <li class="nav-item">
   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFiscalYear"
             aria-expanded="true" aria-controls="collapseFiscalYear">
     <i class="fas fa-fw fa-clipboard-list"></i>
@@ -157,7 +159,7 @@
       <!--End Dropdown Btn-->
     </div>
   </div>
-</li>
+</li> %>
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
 </ul>
