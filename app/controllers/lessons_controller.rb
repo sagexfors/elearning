@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class LessonsController < ApplicationController
+  layout 'dashboards'
+
   def create
     @subject = Subject.find(params[:subject_id])
     @lesson = @subject.lessons.create(lesson_params)
