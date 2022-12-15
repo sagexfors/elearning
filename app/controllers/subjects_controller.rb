@@ -21,6 +21,17 @@ class SubjectsController < ApplicationController
     redirect_to subjects_path if @subject.save
   end
 
+  def edit
+    @user = current_user
+    @subject = Subject.find(params[:id])
+  end
+
+  def update
+    @subject = Subject.find(params[:id])
+    @subject.update(subject_params)
+    redirect_to @subject, status: :see_other
+  end
+
 
   def destroy
     @subject = Subject.find(params[:id])

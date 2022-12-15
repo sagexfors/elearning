@@ -1,0 +1,16 @@
+<div class="container">
+  <h2>Edit Subject:</h2>
+  <%= form_with model: @subject do |form| %>
+    <p>
+      <%= form.label :name, class: "form-label" %><br>
+      <%= form.text_field :name, class: "form-control"  %>
+    </p>
+    <p>
+      <%= form.label :description, class: "form-label" %><br>
+      <%= form.text_area :description, class: "form-control"  %>
+    </p>
+    <p>
+      <%= form.submit "Edit Subject", class: "btn btn-primary"%>
+    </p>
+  <% end %>
+</div>
