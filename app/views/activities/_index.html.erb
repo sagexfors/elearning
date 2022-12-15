@@ -10,6 +10,7 @@
             <%=link_to activity.url, activity.url%>
             <br>
             <%= button_to "Delete", [activity.subject, activity], class: "btn btn-danger", method: :delete %>
+            <%= link_to "Edit", edit_subject_activity_path(activity), class: "btn btn-secondary" %>
           </div>
         </div>
       </div>
