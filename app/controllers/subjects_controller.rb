@@ -5,8 +5,7 @@ class SubjectsController < ApplicationController
 
   layout 'dashboards'
   def index
-    @user = current_user
-    @subjects = @user.subjects
+    @subjects = current_user.subjects
     @subject = Subject.new
   end
 
@@ -15,14 +14,13 @@ class SubjectsController < ApplicationController
   end
 
   def create
-    @user = current_user
-    @subject = @user.subjects.build(subject_params)
+    @subject = Subject.new(subject_params)
+    @subject.user = current_user
 
     redirect_to subjects_path if @subject.save
   end
 
   def edit
-    @user = current_user
     @subject = Subject.find(params[:id])
   end
 
