@@ -21,8 +21,10 @@
       <%= render "dashboards/sidebar" %>
       <div id="content-wrapper" class="d-flex flex-column">
         <div id="content">
-          <%=render "dashboards/topbar" %> <%# render "main" %> <%= yield %> <%=
-          render "dashboards/footer" %>
+          <%= render "dashboards/topbar" %>
+          <%# render "dashboards/main" %> 
+          <%= yield %>
+          <%= render "dashboards/footer" %>
         </div>
       </div>
       <%= javascript_include_tag "sb-admin-2.min" %>

@@ -1,4 +1,4 @@
-<h2>Lessons</h2>
+<h4>Lessons</h2>
 <div class="row row-cols-4">
   <% if subject.lessons.exists? %>
     <% subject.lessons.each do |lesson|%>
@@ -17,6 +17,8 @@
       </div>
     <% end %>
   <% else %>
-    <p>No lessons found</p>
+    <div class="container">
+      <p>No lessons found</p>
+    </div>
   <% end %>
 </div>

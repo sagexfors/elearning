@@ -3,6 +3,10 @@
   <%= render "lessons/index", subject: @subject%>
   <%= render "activities/index", subject: @subject%>
   <br>
-  <%= render "lessons/form", subject: @subject%>
-  <%= render "activities/form", subject: @subject%>
+  <div class="container">
+    <div class="row">
+      <%= render "lessons/form", subject: @subject%>
+      <%= render "activities/form", subject: @subject%>
+    </div>
+  </div>
 </div>
