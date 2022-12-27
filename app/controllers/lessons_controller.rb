@@ -3,10 +3,7 @@
 class LessonsController < ApplicationController
   layout 'dashboards'
 
-  def index #new shit
-    # get all subjects of current user,
-    # then get all lessons of each subject
-    # and print them out
+  def index
     @subjects = current_user.subjects
   end
 

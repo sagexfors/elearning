@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Activities</h1>
+  </div>
+  <% @subjects.each do |subject| %>
+    <h2><%= subject.name %></h2>
+    <div class="row">
+      <% subject.activities.each do |activity| %>
+        <%= render "activity", activity: activity%>
+      <% end %>
+    </div>
+  <% end %>
+</div>

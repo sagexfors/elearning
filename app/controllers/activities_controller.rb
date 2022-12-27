@@ -1,6 +1,10 @@
 class ActivitiesController < ApplicationController
   layout 'dashboards'
 
+  def index
+    @subjects = current_user.subjects
+  end
+
   def create
     @subject = Subject.find(params[:subject_id])
     @activity = @subject.activities.create(activity_params)

@@ -12,4 +12,5 @@ Rails.application.routes.draw do
     resources :activities
   end
   resources :lessons, only: :index
+  resources :activities, only: :index
 end
