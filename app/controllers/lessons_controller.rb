@@ -3,6 +3,13 @@
 class LessonsController < ApplicationController
   layout 'dashboards'
 
+  def index #new shit
+    # get all subjects of current user,
+    # then get all lessons of each subject
+    # and print them out
+    @subjects = current_user.subjects
+  end
+
   def create
     @subject = Subject.find(params[:subject_id])
     @lesson = @subject.lessons.create(lesson_params)
