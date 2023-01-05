@@ -5,4 +5,12 @@ class DashboardsController < ApplicationController
   layout 'dashboards'
 
   def home; end
+
+  def teacher
+
+  end
+
+  def student
+    
+  end
 end

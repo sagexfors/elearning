@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   devise_for :users
   get 'lessons/new'
   get 'dashboards', to: 'dashboards#home'
+  get '/teacher_dashboard', to: 'dashboards#teacher', as: 'dashboards_teacher'
+  get '/student_dashboard', to: 'dashboards#student', as: 'dashboards_student'
   root 'dashboards#home'
 
   resources :subjects do
