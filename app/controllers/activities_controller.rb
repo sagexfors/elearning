@@ -2,7 +2,11 @@ class ActivitiesController < ApplicationController
   layout 'dashboards'
 
   def index
-    @subjects = current_user.subjects
+    if current_user.student?
+      @subjects = current_user.student_subjects
+    elsif current_user.teacher?
+      @subjects = current_user.teacher_subjects
+    end
   end
 
   def create

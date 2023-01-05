@@ -9,10 +9,12 @@
             <p class="card-text"><%= activity.description %></p>
             <%=link_to activity.url, activity.url%>
             <br>
-            <div class="btn-group" role="group">
-              <%= button_to "Delete", [activity.subject, activity], class: "btn btn-danger btn-sm", method: :delete %>
-              <%= link_to "Edit", edit_subject_activity_path(activity), class: "btn btn-secondary btn-sm" %>
-            </div>
+            <% unless current_user.student? %>
+              <div class="btn-group" role="group">
+                <%= button_to "Delete", [activity.subject, activity], class: "btn btn-danger btn-sm", method: :delete %>
+                <%= link_to "Edit", edit_subject_activity_path(activity), class: "btn btn-secondary btn-sm" %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>

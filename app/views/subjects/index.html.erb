@@ -27,12 +27,14 @@
               </div>
             </a>
           </div>
-          <div class="col-auto">
-            <div class="btn-group" role="group">
-              <%= button_to "Delete", subject, class: "btn btn-danger btn-md", method: :delete %>
-              <%= link_to "Edit", edit_subject_path(subject), class: "btn btn-secondary" %>
+          <% unless current_user.student? %>
+            <div class="col-auto">
+              <div class="btn-group" role="group">
+                <%= button_to "Delete", subject, class: "btn btn-danger btn-md", method: :delete %>
+                <%= link_to "Edit", edit_subject_path(subject), class: "btn btn-secondary" %>
+              </div>
             </div>
-          </div>
+          <% end %>
         </div>
       </div>
     </div>
@@ -44,8 +46,10 @@
 </div>
 </div>
 <br>
-<div class="container">
-  <div class="row">
-    <%= render "form", subject: @subject%>
+<% unless current_user.student? %>
+  <div class="container">
+    <div class="row">
+      <%= render "form", subject: @subject%>
+    </div>
   </div>
-</div>
+<% end %>
