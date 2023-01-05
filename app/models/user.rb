@@ -1,12 +1,9 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  has_many :subjects
   has_many :enrollments, foreign_key: :student_id, class_name: "Enrollment"
   has_many :student_subjects, through: :enrollments, source: :subject
-  has_many :teacher_subjects, foreign_key: :teacher_id, class_name: "Subject"
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  has_many :teacher_subjects, foreign_key: :user_id, class_name: "Subject" #change to teacher_id
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   enum role: %i[student teacher admin]

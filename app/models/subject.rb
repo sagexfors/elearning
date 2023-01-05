@@ -6,7 +6,7 @@ class Subject < ApplicationRecord
   #
   has_many :enrollments
   has_many :students, through: :enrollments, source: :student
-  belongs_to :teacher, class_name: "User"
+  belongs_to :teacher, class_name: "User", foreign_key: :user_id #change to teacher_id
 
   belongs_to :user
   validates :name, presence: true, length: { maximum: 30 }
