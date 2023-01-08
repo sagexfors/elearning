@@ -19,6 +19,7 @@ class SubjectsController < ApplicationController
 
   def create
     @subject = Subject.new(subject_params)
+    authorize @subject
     @subject.user = current_user
 
     redirect_to subjects_path if @subject.save
@@ -26,10 +27,12 @@ class SubjectsController < ApplicationController
 
   def edit
     @subject = Subject.find(params[:id])
+    authorize @subject
   end
 
   def update
     @subject = Subject.find(params[:id])
+    authorize @subject
     @subject.update(subject_params)
     redirect_to @subject, status: :see_other
   end
@@ -37,6 +40,7 @@ class SubjectsController < ApplicationController
 
   def destroy
     @subject = Subject.find(params[:id])
+    authorize @subject
     @subject.destroy
     redirect_to @subject, status: :see_other
   end
