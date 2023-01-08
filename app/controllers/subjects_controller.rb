@@ -2,19 +2,17 @@
 
 class SubjectsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_subject, only: %i[show edit update destroy]
 
   layout 'dashboards'
   def index
-    if current_user.student?
-      @subjects = current_user.student_subjects
-    elsif current_user.teacher?
-      @subjects = current_user.teacher_subjects
-    end
+    return @subjects = current_user.student_subjects if current_user.student?
+
+    @subjects = current_user.teacher_subjects
     @subject = Subject.new
   end
 
   def show
-    @subject = Subject.find(params[:id])
   end
 
   def create
@@ -26,12 +24,10 @@ class SubjectsController < ApplicationController
   end
 
   def edit
-    @subject = Subject.find(params[:id])
     authorize @subject
   end
 
   def update
-    @subject = Subject.find(params[:id])
     authorize @subject
     @subject.update(subject_params)
     redirect_to @subject, status: :see_other
@@ -39,7 +35,6 @@ class SubjectsController < ApplicationController
 
 
   def destroy
-    @subject = Subject.find(params[:id])
     authorize @subject
     @subject.destroy
     redirect_to @subject, status: :see_other
@@ -49,5 +44,9 @@ class SubjectsController < ApplicationController
 
   def subject_params
     params.require(:subject).permit(:name, :description)
+  end
+
+  def set_subject
+    @subject = Subject.find(params[:id])
   end
 end
