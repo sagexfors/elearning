@@ -1,35 +1,30 @@
 class ActivitiesController < ApplicationController
   layout 'dashboards'
 
+  before_action :authenticate_user!
+  before_action :set_subject, only: %i[edit update destroy create]
+
   def index
-    if current_user.student?
-      @subjects = current_user.student_subjects
-    elsif current_user.teacher?
-      @subjects = current_user.teacher_subjects
-    end
+    return @subjects = current_user.student_subjects if current_user.student?
+
+    @subjects = current_user.teacher_subjects
+    @subject = Subject.new
   end
 
   def create
-    @subject = Subject.find(params[:subject_id])
-    @activity = @subject.activities.create(activity_params)
+    @subject.activities.create(activity_params)
     redirect_to @subject
   end
   
   def destroy
-    @subject = Subject.find(params[:subject_id])
-    @activity = @subject.activities.find(params[:id])
     @activity.destroy
     redirect_to @subject, status: :see_other
   end
 
   def edit
-    @subject = Subject.find(params[:subject_id])
-    @activity = @subject.activities.find(params[:id])
   end
 
   def update
-    @subject = Subject.find(params[:subject_id])
-    @activity = @subject.activities.find(params[:id])
     @activity.update(activity_params)
     redirect_to @subject, status: :see_other
   end
@@ -38,5 +33,10 @@ class ActivitiesController < ApplicationController
 
   def activity_params
     params.require(:activity).permit(:name, :description, :url)
+  end
+
+  def set_subject
+    @subject = authorize Subject.find(params[:subject_id])
+    @activity = @subject.activities.find(params[:id])
   end
 end
