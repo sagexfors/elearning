@@ -1,0 +1,30 @@
+<div class="col-xl-3 col-md-6 mb-4">
+  <div class="card border-left-success shadow h-100 py-2">
+    <div class="card-body">
+    </a>
+    <div class="row no-gutters align-items-center">
+    </a>
+    <div class="col mr-2">
+      <div class="h5 font-weight-bold text-success text-uppercase mb-1">
+        <%=link_to subject.name, subject%>
+      </div>
+      <div class="text-xs mb-0 font-weight-bold text-gray-800">
+        Time
+      </div>
+      <div class="text-xs mb-0 font-weight-bold text-gray-800">
+        00:00 - 00:00
+      </div>
+      <div class="text-xs mb-0 font-weight-bold text-gray-800">
+        Ms. Rose Ann D. Manaig
+      </div>
+    </a>
+  </div>
+  <% if policy(subject).update? && policy(subject).destroy? %>
+    <div class="col-auto">
+      <div class="btn-group" role="group">
+        <%= button_to "Delete", subject, class: "btn btn-danger btn-md", method: :delete %>
+        <%= link_to "Edit", edit_subject_path(subject), class: "btn btn-secondary" %>
+      </div>
+    </div>
+  <% end %>
+</div>
