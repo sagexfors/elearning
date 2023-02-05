@@ -11,11 +11,14 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_01_08_083544) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "activities", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "description", null: false
+    t.string "name"
+    t.text "description"
     t.string "url"
-    t.integer "subject_id", null: false
+    t.bigint "subject_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["subject_id"], name: "index_activities_on_subject_id"
@@ -31,9 +34,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_08_083544) do
   end
 
   create_table "lessons", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "description", null: false
-    t.integer "subject_id", null: false
+    t.string "name"
+    t.text "description"
+    t.bigint "subject_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "url"
@@ -41,12 +44,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_08_083544) do
   end
 
   create_table "subjects", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "description", null: false
+    t.string "name"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
-    t.index ["user_id"], name: "index_subjects_user_id"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -66,5 +68,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_08_083544) do
   add_foreign_key "enrollments", "subjects"
   add_foreign_key "enrollments", "users", column: "student_id"
   add_foreign_key "lessons", "subjects"
-  add_foreign_key "subjects", "users"
 end
