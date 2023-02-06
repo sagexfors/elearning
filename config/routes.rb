@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'dashboards', to: 'dashboards#home'
   get '/teacher_dashboard', to: 'dashboards#teacher', as: 'dashboards_teacher'
   get '/student_dashboard', to: 'dashboards#student', as: 'dashboards_student'
+  post '/enrollments/enroll', to: 'enrollments#enroll', as: 'enrollments_enroll'
   root 'dashboards#home'
 
   resources :subjects do

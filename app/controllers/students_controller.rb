@@ -3,5 +3,6 @@ class StudentsController < ApplicationController
   layout 'dashboards'
   def index
     @students = current_user.teacher_students.uniq
+    @all_students = User.where(role: 'student').where.not(id: @students.map(&:id))
   end
 end
