@@ -4,7 +4,7 @@ class LessonsController < ApplicationController
   layout 'dashboards'
 
   before_action :authenticate_user!
-  before_action :set_subject, only: [:create, :destroy, :edit, :update]
+  before_action :set_subject, only: [:destroy, :edit, :update]
 
   def index
     return @subjects = current_user.student_subjects if current_user.student?
@@ -14,6 +14,7 @@ class LessonsController < ApplicationController
   end
 
   def create
+    @subject = authorize Subject.find(params[:subject_id])
     @subject.lessons.create(lesson_params)
     redirect_to @subject
   end
