@@ -5,50 +5,58 @@
     </div>
     <div id="status" ></div>
     <div class="card-body">
-      <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" height="100%"width="100%" cellspacing="1">
-          <thead>
-            <tr>
-              <th>Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @students.each do |student| %>
+      <% if @students.present? %>
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" height="100%"width="100%" cellspacing="1">
+            <thead>
               <tr>
-                <td><%= student.email %></td>
+                <th>Email</th>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              <% @students.each do |student| %>
+                <tr>
+                  <td><%= student.email %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% else %>
+        <p>You have no students</p>
+      <% end %>
     </div>
   </div>
 </div>
 <div class="container-fluid">
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">All Students</h6>
+      <h6 class="m-0 font-weight-bold text-primary">Students Not Enrolled To You</h6>
     </div>
     <div id="status" ></div>
     <div class="card-body">
-      <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" height="100%"width="100%" cellspacing="1">
-          <thead>
-            <tr>
-              <th>Email</th>
-              <th>Options</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @all_students.each do |student| %>
+      <% if @all_students.present? %>
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" height="100%"width="100%" cellspacing="1">
+            <thead>
               <tr>
-                <td><%= student.email %></td>
-                <td><%= button_to "Enroll", enrollments_enroll_path, class: "justify-content-center btn btn-success btn-sm",  params: { student_id: student.id} %></td>
+                <th>Email</th>
+                <th>Options</th>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              <% @all_students.each do |student| %>
+                <tr>
+                  <td><%= student.email %></td>
+                  <td><%= button_to "Enroll", enrollments_enroll_path, class: "justify-content-center btn btn-success btn-sm",  params: { student_id: student.id} %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% else %>
+        <p>There are no students</p>
+      <% end %>
     </div>
   </div>
 </div>

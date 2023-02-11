@@ -2,7 +2,7 @@ class ActivitiesController < ApplicationController
   layout 'dashboards'
 
   before_action :authenticate_user!
-  before_action :set_subject, only: %i[edit update destroy create]
+  before_action :set_subject, only: %i[edit update destroy]
 
   def index
     return @subjects = current_user.student_subjects if current_user.student?
@@ -12,6 +12,7 @@ class ActivitiesController < ApplicationController
   end
 
   def create
+    @subject = authorize Subject.find(params[:subject_id])
     @subject.activities.create(activity_params)
     redirect_to @subject
   end

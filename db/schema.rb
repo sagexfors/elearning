@@ -12,8 +12,8 @@
 
 ActiveRecord::Schema[7.0].define(version: 2023_01_08_083544) do
   create_table "activities", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "description", null: false
+    t.string "name"
+    t.text "description"
     t.string "url"
     t.integer "subject_id", null: false
     t.datetime "created_at", null: false
@@ -31,8 +31,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_08_083544) do
   end
 
   create_table "lessons", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "description", null: false
+    t.string "name"
+    t.text "description"
     t.integer "subject_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -41,12 +41,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_08_083544) do
   end
 
   create_table "subjects", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "description", null: false
+    t.string "name"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
-    t.index ["user_id"], name: "index_subjects_user_id"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -66,5 +65,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_08_083544) do
   add_foreign_key "enrollments", "subjects"
   add_foreign_key "enrollments", "users", column: "student_id"
   add_foreign_key "lessons", "subjects"
-  add_foreign_key "subjects", "users"
 end

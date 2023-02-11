@@ -9,7 +9,7 @@ class SubjectPolicy < ApplicationPolicy
   end
 
   def create?
-    record.user == user
+    user.admin? || user.teacher?
   end
 
   def new?

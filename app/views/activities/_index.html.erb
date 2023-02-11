@@ -12,7 +12,7 @@
             <% unless current_user.student? %>
               <div class="btn-group" role="group">
                 <%= button_to "Delete", [activity.subject, activity], class: "btn btn-danger btn-sm", method: :delete %>
-                <%= link_to "Edit", edit_subject_activity_path(activity), class: "btn btn-secondary btn-sm" %>
+                <%= link_to "Edit", edit_subject_activity_path(activity.subject, activity), class: "btn btn-secondary btn-sm" %>
               </div>
             <% end %>
           </div>
