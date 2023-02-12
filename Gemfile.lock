@@ -96,6 +96,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    dockerfile-rails (1.0.13)
+      rails
     erubi (1.11.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -133,6 +135,7 @@ GEM
     nokogiri (1.13.9-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pg (1.4.5)
     public_suffix (5.0.0)
     puma (5.6.5)
       nio4r (~> 2.0)
@@ -228,8 +231,10 @@ DEPENDENCIES
   database_consistency (~> 1.7)
   debug
   devise
+  dockerfile-rails (>= 1.0)
   importmap-rails
   jbuilder
+  pg (~> 1.4)
   puma (~> 5.0)
   pundit (~> 2.3)
   rails (~> 7.0.4)

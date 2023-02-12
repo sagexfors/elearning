@@ -33,3 +33,7 @@ group :test do
 end
 
 
+
+gem "dockerfile-rails", ">= 1.0", :group => :development
+
+gem "pg", "~> 1.4"
