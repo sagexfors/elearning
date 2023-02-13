@@ -1,4 +1,4 @@
-# fly.toml file generated for elearning on 2023-02-13T22:41:31+08:00
+# fly.toml file generated for elearning on 2023-02-13T23:10:55+08:00
 
 app = "elearning"
 kill_signal = "SIGINT"

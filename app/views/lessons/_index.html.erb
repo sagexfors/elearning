@@ -16,14 +16,14 @@
             </div>
           </div>
         </div>
+        <br>
+        <% unless current_user.student? %>
+          <div class="btn-group" role="group">
+            <%= button_to "Delete", [lesson.subject, lesson], class: "btn btn-danger btn-sm", method: :delete %>
+            <%= link_to "Edit", edit_subject_lesson_path(lesson.subject, lesson), class: "btn btn-secondary btn-sm" %>
+          </div>
+        <% end %>
       </div>
-      <br>
-      <% unless current_user.student? %>
-        <div class="btn-group" role="group">
-          <%= button_to "Delete", [lesson.subject, lesson], class: "btn btn-danger btn-sm", method: :delete %>
-          <%= link_to "Edit", edit_subject_lesson_path(lesson.subject, lesson), class: "btn btn-secondary btn-sm" %>
-        </div>
-      <% end %>
     <% end %>
   <% else %>
     <div class="container">
