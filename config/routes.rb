@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :notifications, only: :index
   get 'students/index'
   devise_for :users
   get 'lessons/new'

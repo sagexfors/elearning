@@ -17,11 +17,13 @@ class LessonNotification < Noticed::Base
 
   # Define helper methods to make rendering easier.
   #
-  # def message
-  #   t(".message")
-  # end
+  def message
+    @lesson = params[:lesson]
+    @subject = @lesson.subject
+   "New lesson #{@lesson.name} has been posted in #{@subject.name}"
+  end
   #
   def url
-    subject_lesson_path(params[:lesson])
+    subject_lessons_path(params[:lesson])
   end
 end
