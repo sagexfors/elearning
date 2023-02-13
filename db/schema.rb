@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_08_083544) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_13_122541) do
   create_table "activities", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -38,6 +38,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_08_083544) do
     t.datetime "updated_at", null: false
     t.string "url"
     t.index ["subject_id"], name: "index_lessons_on_subject_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "recipient_type", null: false
+    t.integer "recipient_id", null: false
+    t.string "type", null: false
+    t.json "params"
+    t.datetime "read_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["read_at"], name: "index_notifications_on_read_at"
+    t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
   end
 
   create_table "subjects", force: :cascade do |t|
