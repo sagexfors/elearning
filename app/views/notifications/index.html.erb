@@ -1,8 +1,12 @@
-<h1>Notifications</h1>
-<ul>
-  <% @notifications.each do |notification|%>
-    <li>
-      <%= link_to notification.to_notification.message, notification.to_notification.url %>
-    </li>
+<div class="container">
+  <h1>Notifications</h1>
+  <% if @notifications %>
+    <% @notifications.each do |notification|%>
+      <div class="alert alert-primary" role="alert">
+        <%= link_to notification.to_notification.message, notification.to_notification.url %>
+      </div>
+    <% end %>
+  <% else %>
+    <p>There are no notifications.</p>
   <% end %>
-</ul>
+</div>

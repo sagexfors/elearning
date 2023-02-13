@@ -20,7 +20,7 @@ class LessonNotification < Noticed::Base
   def message
     @lesson = params[:lesson]
     @subject = @lesson.subject
-   "New lesson #{@lesson.name} has been posted in #{@subject.name}"
+   "New: Lesson #{@lesson.name} has been posted in #{@subject.name}."
   end
   #
   def url
