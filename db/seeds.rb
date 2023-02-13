@@ -8,7 +8,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 # Create a teacher and 10 students
-User.create(email: "teacher1@school.com", role: "teacher", password: "registration")
+teacher = User.create(email: "teacher1@school.com", role: "teacher", password: "registration")
 
 10.times do |i|
   User.create(email: "student#{i+1}@school.com", role: "student", password: "registration")
@@ -18,7 +18,7 @@ end
 subjects = ["Math", "Science", "History", "English", "Art"]
 
 subjects.each do |subject|
-  Subject.create(name: subject, description: "This is a description for #{subject}", user_id: 1)
+  Subject.create(name: subject, description: "This is a description for #{subject}", user_id: teacher.id)
 end
 
 subjects = Subject.all
