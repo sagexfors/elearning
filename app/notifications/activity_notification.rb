@@ -20,7 +20,7 @@ class ActivityNotification < Noticed::Base
   def message
     @activity = params[:activity]
     @subject = @activity.subject
-   "New: Activity #{@activity.name} has been posted in #{@subject.name}."
+    "<strong>#{@activity.created_at.to_s(:short)}</strong> New Activity: #{@activity.name} has been posted in #{@subject.name}.".html_safe
   end
   #
   def url

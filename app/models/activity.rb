@@ -3,7 +3,6 @@ class Activity < ApplicationRecord
   validates :name, presence: true, length: { maximum: 240 }
   validates :description, presence: true, length: { minimum: 5 }
   validates :url, presence: true, length: { maximum: 240 }
-  # add validation for url same with lesson
 
   has_noticed_notifications
 
