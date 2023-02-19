@@ -11,6 +11,10 @@ class ActivitiesController < ApplicationController
     @subject = Subject.new
   end
 
+  def show
+    @activity = Activity.find(params[:id])
+  end
+
   def create
     @subject = authorize Subject.find(params[:subject_id])
     @subject.activities.create(activity_params)

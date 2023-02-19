@@ -7,7 +7,7 @@
           <div class="card-body">
             <div class="row">
               <div class="col-8">
-                <h5 class="card-title"><%= lesson.name %></h5>
+                <h5 class="card-title"><%= link_to lesson.name, subject_lesson_path(lesson.subject, lesson)%></h5>
                 <p class="card-text"><%= lesson.description %></p>
               </div>
               <div class="col-4 d-flex align-items-center justify-content-end">
@@ -19,7 +19,7 @@
         <br>
         <% unless current_user.student? %>
           <div class="btn-group" role="group">
-            <%= button_to "Delete", [lesson.subject, lesson], class: "btn btn-danger btn-sm", method: :delete %>
+            <%= button_to "Delete", [lesson.subject, lesson], class: "btn btn-danger btn-sm", method: :delete%>
             <%= link_to "Edit", edit_subject_lesson_path(lesson.subject, lesson), class: "btn btn-secondary btn-sm" %>
           </div>
         <% end %>

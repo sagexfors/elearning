@@ -13,6 +13,10 @@ class LessonsController < ApplicationController
     @subject = Subject.new
   end
 
+  def show
+    @lesson = Lesson.find(params[:id])
+  end
+
   def create
     @subject = authorize Subject.find(params[:subject_id])
     @subject.lessons.create(lesson_params)
