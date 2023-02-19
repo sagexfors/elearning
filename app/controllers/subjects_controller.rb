@@ -19,8 +19,9 @@ class SubjectsController < ApplicationController
     @subject = Subject.new(subject_params)
     authorize @subject
     @subject.user = current_user
-
-    redirect_to subjects_path if @subject.save
+    if @subject.save
+      redirect_to subjects_path, status: :see_other, notice: 'Subject was successfully created.'
+    end
   end
 
   def edit
@@ -30,14 +31,14 @@ class SubjectsController < ApplicationController
   def update
     authorize @subject
     @subject.update(subject_params)
-    redirect_to @subject, status: :see_other
+    redirect_to @subject, status: :see_other, notice: 'Subject was successfully updated.'
   end
 
 
   def destroy
     authorize @subject
     @subject.destroy
-    redirect_to @subject, status: :see_other
+    redirect_to @subject, status: :see_other, notice: 'Subject was successfully destroyed.'
   end
 
   private
