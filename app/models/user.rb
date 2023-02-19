@@ -14,4 +14,8 @@ class User < ApplicationRecord
   def set_default_role
     self.role ||= :student
   end
+
+  def to_s
+    email
+  end
 end
