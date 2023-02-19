@@ -4,11 +4,27 @@
   <%= render "activities/index", subject: @subject%>
   <br>
   <% unless current_user.student? %>
-    <div class="container">
-      <div class="row">
-        <%= render "lessons/form", subject: @subject%>
-        <%= render "activities/form", subject: @subject%>
-      </div>
+    <div class="container-fluid">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#lessonModal">
+        New Lesson
+      </button>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#activityModal">
+        New Activity
+      </button>
     </div>
   <% end %>
+</div>
+<div class="row">
+  <!-- Modal -->
+  <div class="modal fade" id="lessonModal" tabindex="-1" aria-labelledby="lessonModalLabel" aria-hidden="true">
+    <%= render "lessons/form", subject: @subject%>
+  </div>
+</div>
+<div class="row">
+  <!-- Modal -->
+  <div class="modal fade" id="activityModal" tabindex="-1" aria-labelledby="activityModalLabel" aria-hidden="true">
+    <%= render "activities/form", subject: @subject%>
+  </div>
 </div>

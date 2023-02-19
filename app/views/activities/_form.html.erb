@@ -1,20 +1,28 @@
-<div class="col-6">
-  <h2>Create Activity:</h2>
-  <%= form_with model: [ subject, subject.activities.build ] do |form| %>
-    <p>
-      <%= form.label :name, class: "form-label" %><br>
-      <%= form.text_field :name,class: "form-control" %>
-    </p>
-    <p>
-      <%= form.label :description, class: "form-label" %><br>
-      <%= form.text_area :description,class: "form-control" %>
-    </p>
-    <p>
-      <%= form.label :url, class: "form-label" %><br>
-      <%= form.text_field :url,class: "form-control" %>
-    </p>
-    <p>
-      <%= form.submit "Create Activity", class: "btn btn-primary"%>
-    </p>
-  <% end %>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h1 class="modal-title fs-5" id="activityModalLabel">New Activity:</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <%= form_with model: [ subject, subject.activities.build ] do |form| %>
+        <p>
+          <%= form.label :name, class: "form-label" %><br>
+          <%= form.text_field :name,class: "form-control" %>
+        </p>
+        <p>
+          <%= form.label :description, class: "form-label" %><br>
+          <%= form.text_area :description,class: "form-control" %>
+        </p>
+        <p>
+          <%= form.label :url, class: "form-label" %><br>
+          <%= form.text_field :url,class: "form-control" %>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <%= form.submit "Create Activity", class: "btn btn-primary"%>
+      <% end %>
+    </div>
+  </div>
 </div>
