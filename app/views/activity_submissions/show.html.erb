@@ -1,0 +1,15 @@
+<div class="col-12 col-md-6 col-lg-4 mb-4">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-8">
+          <h5 class="card-title"><%=@activity_submission.title  %></h5>
+          <p class="card-text"><%= @activity_submission.description%></p>
+          <p class="card-text"><%= @activity_submission.url%></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= link_to "Edit", edit_activity_submission_path(@activity_submission) %>
+<%= link_to "Destroy", activity_submission_path(@activity_submission), method: :delete, data: { confirm: "Are you sure?" } %>

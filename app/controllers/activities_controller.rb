@@ -13,6 +13,9 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = Activity.find(params[:id])
+    unless current_user.student?
+      @answers = @activity.activity_submissions
+    end
   end
 
   def create

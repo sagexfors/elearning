@@ -3,6 +3,7 @@ class Activity < ApplicationRecord
   validates :name, presence: true, length: { minimum: 1}
   validates :description, presence: true, length: { minimum: 3 }
   validates :url, presence: true, length: { minimum: 1 }
+  has_many :activity_submissions, dependent: :destroy
 
   has_noticed_notifications
 

@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :teacher_subjects, foreign_key: :user_id, class_name: "Subject" #change to teacher_id
   has_many :teacher_students, through: :teacher_subjects, source: :students
   has_many :notifications, as: :recipient, dependent: :destroy
+  has_many :activity_submissions, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
