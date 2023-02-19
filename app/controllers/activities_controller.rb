@@ -14,12 +14,12 @@ class ActivitiesController < ApplicationController
   def create
     @subject = authorize Subject.find(params[:subject_id])
     @subject.activities.create(activity_params)
-    redirect_to @subject
+    redirect_to @subject, status: :see_other, notice: 'Activity was successfully created.'
   end
   
   def destroy
     @activity.destroy
-    redirect_to @subject, status: :see_other
+    redirect_to @subject, status: :see_other, notice: 'Activity was successfully deleted.'
   end
 
   def edit
@@ -27,7 +27,7 @@ class ActivitiesController < ApplicationController
 
   def update
     @activity.update(activity_params)
-    redirect_to @subject, status: :see_other
+    redirect_to @subject, status: :see_other, notice: 'Activity was successfully updated.'
   end
 
   private

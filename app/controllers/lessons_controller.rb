@@ -16,12 +16,12 @@ class LessonsController < ApplicationController
   def create
     @subject = authorize Subject.find(params[:subject_id])
     @subject.lessons.create(lesson_params)
-    redirect_to @subject
+    redirect_to @subject, status: :see_other, notice: 'Lesson was successfully created.'
   end
 
   def destroy
     @lesson.destroy
-    redirect_to @subject, status: :see_other
+    redirect_to @subject, status: :see_other, notice: 'Lesson was successfully deleted.'
   end
 
   def edit
@@ -29,7 +29,7 @@ class LessonsController < ApplicationController
 
   def update
     @lesson.update(lesson_params)
-    redirect_to @subject, status: :see_other
+    redirect_to @subject, status: :see_other, notice: 'Lesson was successfully updated.'
   end
 
   private

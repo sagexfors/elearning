@@ -38,7 +38,7 @@ class SubjectsController < ApplicationController
   def destroy
     authorize @subject
     @subject.destroy
-    redirect_to @subject, status: :see_other, notice: 'Subject was successfully destroyed.'
+    redirect_to @subject, status: :see_other, notice: 'Subject was successfully deleted.'
   end
 
   private
