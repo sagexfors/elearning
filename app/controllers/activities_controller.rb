@@ -20,8 +20,10 @@ class ActivitiesController < ApplicationController
 
   def create
     @subject = authorize Subject.find(params[:subject_id])
-    @subject.activities.create(activity_params)
-    redirect_to @subject, status: :see_other, notice: 'Activity was successfully created.'
+    @activity = @subject.activities.build(activity_params)
+    if @activity.save
+      redirect_to @subject, status: :see_other, notice: 'Activity was successfully created.'
+    end
   end
   
   def destroy
@@ -40,7 +42,7 @@ class ActivitiesController < ApplicationController
   private
 
   def activity_params
-    params.require(:activity).permit(:name, :description, :url)
+    params.require(:activity).permit(:name, :description)
   end
 
   def set_subject

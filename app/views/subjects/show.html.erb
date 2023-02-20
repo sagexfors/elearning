@@ -19,12 +19,32 @@
 <div class="row">
   <!-- Modal -->
   <div class="modal fade" id="lessonModal" tabindex="-1" aria-labelledby="lessonModalLabel" aria-hidden="true">
-    <%= render "lessons/form", subject: @subject%>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="lessonModalLabel">New Lesson:</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <%= render "lessons/form", subject: @subject%>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <div class="row">
   <!-- Modal -->
   <div class="modal fade" id="activityModal" tabindex="-1" aria-labelledby="activityModalLabel" aria-hidden="true">
-    <%= render "activities/form", subject: @subject%>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="activityModalLabel">New Activity:</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <%= render "activities/form", subject: @subject%>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
