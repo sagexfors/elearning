@@ -14,11 +14,10 @@ class Lesson < ApplicationRecord
   def notify_user
     LessonNotification.with(lesson: self).deliver_later(subject.user.teacher_students.uniq)
   end
-
   def acceptable_file
     return unless file.attached?
   
-    allowed_content_types = %w[application/pdf application/vnd.openxmlformats-officedocument.wordprocessingml.document video/mp4 application/vnd.ms-powerpoint]
+    allowed_content_types = %w[application/pdf application/vnd.openxmlformats-officedocument.wordprocessingml.document video/mp4 application/vnd.ms-powerpoint application/vnd.openxmlformats-officedocument.presentationml.presentation]
   
     unless allowed_content_types.include?(file.content_type)
       errors.add(:file, "must be a PDF, DOCX, MP4, or PowerPoint")
@@ -28,4 +27,6 @@ class Lesson < ApplicationRecord
       errors.add(:file, "is too big")
     end
   end
+  
+
 end
