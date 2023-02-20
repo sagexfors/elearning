@@ -10,9 +10,6 @@
                 <h5 class="card-title"><%= link_to lesson.name, subject_lesson_path(lesson.subject, lesson)%></h5>
                 <p class="card-text"><%= lesson.description %></p>
               </div>
-              <div class="col-4 d-flex align-items-center justify-content-end">
-                <%=link_to "Open", lesson.url, class: "btn btn-outline-primary btn-sm", target: :_blank%>
-              </div>
             </div>
           </div>
         </div>

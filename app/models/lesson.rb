@@ -4,7 +4,6 @@ class Lesson < ApplicationRecord
   belongs_to :subject
   validates :name, presence: true, length: { minimum: 1 }
   validates :description, presence: true,   length: { minimum: 3 }
-  validates :url, presence: true, length: { minimum: 1 }
   validate :acceptable_file
   has_one_attached :file
   has_noticed_notifications
