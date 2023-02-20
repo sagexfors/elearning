@@ -19,9 +19,13 @@ class LessonsController < ApplicationController
 
   def create
     @subject = authorize Subject.find(params[:subject_id])
-    @subject.lessons.create(lesson_params)
-    redirect_to @subject, status: :see_other, notice: 'Lesson was successfully created.'
+    @lesson = @subject.lessons.build(lesson_params)
+  
+    if @lesson.save
+      redirect_to @subject, status: :see_other, notice: 'Lesson was successfully created.'
+    end
   end
+  
 
   def destroy
     @lesson.destroy
@@ -39,7 +43,7 @@ class LessonsController < ApplicationController
   private
 
   def lesson_params
-    params.require(:lesson).permit(:name, :description, :url)
+    params.require(:lesson).permit(:name, :description, :url, :file)
   end
   
   def set_subject
