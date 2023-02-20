@@ -17,5 +17,5 @@ Rails.application.routes.draw do
   end
   resources :lessons, only: :index
   resources :activities, only: :index
-  resources :activity_submissions, only: [:create, :edit, :update, :show]
+  resources :activity_submissions, only: [:create, :edit, :update, :show, :destroy]
 end
