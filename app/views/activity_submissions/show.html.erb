@@ -10,6 +10,7 @@
       </div>
     </div>
   </div>
+  <br>
+  <%= link_to "Edit", edit_activity_submission_path(@activity_submission), class: "btn btn-secondary" %>
+  <%= button_to "Destroy", activity_submission_path(@activity_submission), method: :delete, class: "btn btn-danger" %>
 </div>
-<%= link_to "Edit", edit_activity_submission_path(@activity_submission) %>
-<%= link_to "Destroy", activity_submission_path(@activity_submission), method: :delete, data: { confirm: "Are you sure?" } %>

@@ -25,6 +25,12 @@ class ActivitySubmissionsController < ApplicationController
     end
   end
 
+  def destroy
+    @activity_submission = ActivitySubmission.find(params[:id])
+    @activity_submission.destroy
+    redirect_to activities_path, notice: "Answer deleted."
+  end
+
   private
 
   def activity_submission_params
