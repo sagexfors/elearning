@@ -1,14 +1,24 @@
-<div class="container-fluid">
-  <!-- Page Heading -->
-  <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Lessons</h1>
-  </div>
-  <% @subjects.each do |subject| %>
-    <h2><%= subject.name %></h2>
-    <div class="row">
-      <% subject.lessons.each do |lesson| %>
-        <%= render "lesson", lesson: lesson%>
+<div class="container">
+  <h1 class="text-center mb-4">Lessons</h1>
+  <div class="row">
+    <% @subjects.each do |subject| %>
+      <div class="col-md-12 mb-4">
+        <h2 class="fw-bold mb-4"><%= subject.name %></h2>
+      </div>
+      <% if subject.lessons.any? %>
+        <% subject.lessons.each do |lesson| %>
+          <div class="col-md-6 col-lg-4 mb-4">
+            <%= render 'lesson', lesson: lesson %>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="container text-center">
+          <div class="my-5">
+            <h3>Oops! No lessons found.</h3>
+            <p class="lead">There are currently no lessons available for this subject.</p>
+          </div>
+        </div>
       <% end %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

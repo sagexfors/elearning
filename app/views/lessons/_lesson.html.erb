@@ -1,12 +1,6 @@
-<div class="col-12 col-md-6 col-lg-4 mb-4">
-  <div class="card">
-    <div class="card-body">
-      <div class="row">
-        <div class="col-8">
-          <h5 class="card-title"><%= link_to lesson.name, subject_lesson_path(lesson.subject, lesson)%></h5>
-          <p class="card-text"><%= lesson.description %></p>
-        </div>
-      </div>
-    </div>
+<div class="card h-100">
+  <div class="card-body">
+    <h5 class="card-title"><%= link_to truncate(lesson.name, length: 50), subject_lesson_path(lesson.subject, lesson) %></h5>
+    <p class="card-text"><%= truncate(lesson.description, length: 100) %></p>
   </div>
 </div>
