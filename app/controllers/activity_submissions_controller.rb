@@ -36,6 +36,6 @@ class ActivitySubmissionsController < ApplicationController
   private
 
   def activity_submission_params
-    params.require(:activity_submission).permit(:title, :description, :url, :activity_id)
+    params.require(:activity_submission).permit(:title, :description, :file, :activity_id)
   end
 end
