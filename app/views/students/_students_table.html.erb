@@ -1,0 +1,22 @@
+<% if students.present? %>
+  <div class="table-responsive">
+    <table class="table" id="dataTable" height="100%"width="100%" cellspacing="1">
+      <thead>
+        <tr>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% students.each do |student| %>
+          <tr>
+            <td><%= student.email %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <div class="text-center">
+    <p>You don't have any students yet. </p>
+  </div>
+<% end %>

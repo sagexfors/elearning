@@ -5,26 +5,7 @@
     </div>
     <div id="status" ></div>
     <div class="card-body">
-      <% if @students.present? %>
-        <div class="table-responsive">
-          <table class="table table-bordered" id="dataTable" height="100%"width="100%" cellspacing="1">
-            <thead>
-              <tr>
-                <th>Email</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @students.each do |student| %>
-                <tr>
-                  <td><%= student.email %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-      <% else %>
-        <p>You have no students</p>
-      <% end %>
+      <%= render partial: "students_table", locals: { students: @students } %>
     </div>
   </div>
 </div>
@@ -35,28 +16,7 @@
     </div>
     <div id="status" ></div>
     <div class="card-body">
-      <% if @all_students.present? %>
-        <div class="table-responsive">
-          <table class="table table-bordered" id="dataTable" height="100%"width="100%" cellspacing="1">
-            <thead>
-              <tr>
-                <th>Email</th>
-                <th>Options</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @all_students.each do |student| %>
-                <tr>
-                  <td><%= student.email %></td>
-                  <td><%= button_to "Enroll", enrollments_enroll_path, class: "justify-content-center btn btn-success btn-sm",  params: { student_id: student.id} %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-      <% else %>
-        <p>There are no students</p>
-      <% end %>
+      <%= render partial: "all_students_table", locals: { all_students: @all_students } %>
     </div>
   </div>
 </div>

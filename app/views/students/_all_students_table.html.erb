@@ -1,0 +1,22 @@
+<% if all_students.present? %>
+  <div class="table-responsive">
+    <table class="table" id="dataTable" height="100%"width="100%" cellspacing="1">
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% all_students.each do |student| %>
+          <tr>
+            <td><%= student.email %></td>
+            <td><%= button_to "Enroll", enrollments_enroll_path, class: "justify-content-center btn btn-success btn-sm",  params: { student_id: student.id} %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <p>There are no students</p>
+<% end %>
