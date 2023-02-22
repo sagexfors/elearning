@@ -6,11 +6,7 @@ class DashboardsController < ApplicationController
 
   def home; end
 
-  def teacher
+  def teacher; end
 
-  end
-
-  def student
-    
-  end
+  def student; end
 end

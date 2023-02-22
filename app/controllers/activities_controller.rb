@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ActivitiesController < ApplicationController
   layout 'dashboards'
 
@@ -13,26 +15,25 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = Activity.find(params[:id])
-    unless current_user.student?
-      @answers = @activity.activity_submissions
-    end
+    return if current_user.student?
+
+    @answers = @activity.activity_submissions
   end
 
   def create
     @subject = authorize Subject.find(params[:subject_id])
     @activity = @subject.activities.build(activity_params)
-    if @activity.save
-      redirect_to @subject, status: :see_other, notice: 'Activity was successfully created.'
-    end
+    return unless @activity.save
+
+    redirect_to @subject, status: :see_other, notice: 'Activity was successfully created.'
   end
-  
+
   def destroy
     @activity.destroy
     redirect_to @subject, status: :see_other, notice: 'Activity was successfully deleted.'
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @activity.update(activity_params)

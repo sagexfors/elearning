@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class Activity < ApplicationRecord
   belongs_to :subject
-  validates :name, presence: true, length: { minimum: 1}
+  validates :name, presence: true, length: { minimum: 1 }
   validates :description, presence: true, length: { minimum: 3 }
   has_many :activity_submissions, dependent: :destroy
 

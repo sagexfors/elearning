@@ -1,5 +1,6 @@
-class SubjectPolicy < ApplicationPolicy
+# frozen_string_literal: true
 
+class SubjectPolicy < ApplicationPolicy
   def update?
     record.user == user
   end

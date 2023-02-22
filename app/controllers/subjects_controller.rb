@@ -12,16 +12,15 @@ class SubjectsController < ApplicationController
     @subject = Subject.new
   end
 
-  def show
-  end
+  def show; end
 
   def create
     @subject = Subject.new(subject_params)
     authorize @subject
     @subject.user = current_user
-    if @subject.save
-      redirect_to subjects_path, status: :see_other, notice: 'Subject was successfully created.'
-    end
+    return unless @subject.save
+
+    redirect_to subjects_path, status: :see_other, notice: 'Subject was successfully created.'
   end
 
   def edit
@@ -33,7 +32,6 @@ class SubjectsController < ApplicationController
     @subject.update(subject_params)
     redirect_to @subject, status: :see_other, notice: 'Subject was successfully updated.'
   end
-
 
   def destroy
     authorize @subject

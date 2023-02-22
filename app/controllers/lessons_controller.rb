@@ -4,7 +4,7 @@ class LessonsController < ApplicationController
   layout 'dashboards'
 
   before_action :authenticate_user!
-  before_action :set_subject, only: [:destroy, :edit, :update]
+  before_action :set_subject, only: %i[destroy edit update]
 
   def index
     return @subjects = current_user.student_subjects if current_user.student?
@@ -20,20 +20,18 @@ class LessonsController < ApplicationController
   def create
     @subject = authorize Subject.find(params[:subject_id])
     @lesson = @subject.lessons.build(lesson_params)
-  
-    if @lesson.save
-      redirect_to @subject, status: :see_other, notice: 'Lesson was successfully created.'
-    end
+
+    return unless @lesson.save
+
+    redirect_to @subject, status: :see_other, notice: 'Lesson was successfully created.'
   end
-  
 
   def destroy
     @lesson.destroy
     redirect_to @subject, status: :see_other, notice: 'Lesson was successfully deleted.'
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @lesson.update(lesson_params)
@@ -45,7 +43,7 @@ class LessonsController < ApplicationController
   def lesson_params
     params.require(:lesson).permit(:name, :description, :file)
   end
-  
+
   def set_subject
     @subject = authorize Subject.find(params[:subject_id])
     @lesson = @subject.lessons.find(params[:id])

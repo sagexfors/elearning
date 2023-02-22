@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  has_many :enrollments, foreign_key: :student_id, class_name: "Enrollment"
+  has_many :enrollments, foreign_key: :student_id, class_name: 'Enrollment'
   has_many :student_subjects, through: :enrollments, source: :subject
-  has_many :teacher_subjects, foreign_key: :user_id, class_name: "Subject" #change to teacher_id
+  has_many :teacher_subjects, foreign_key: :user_id, class_name: 'Subject' # change to teacher_id
   has_many :teacher_students, through: :teacher_subjects, source: :students
   has_many :notifications, as: :recipient, dependent: :destroy
   has_many :activity_submissions, dependent: :destroy

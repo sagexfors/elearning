@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ActivitySubmissionsController < ApplicationController
   layout 'dashboards'
 
@@ -5,9 +7,9 @@ class ActivitySubmissionsController < ApplicationController
   def create
     @activity_submission = ActivitySubmission.new(activity_submission_params)
     @activity_submission.student = current_user
-    if @activity_submission.save
-      redirect_to @activity_submission, notice: "Answer submitted"
-    end
+    return unless @activity_submission.save
+
+    redirect_to @activity_submission, notice: 'Answer submitted'
   end
 
   def show
@@ -20,15 +22,15 @@ class ActivitySubmissionsController < ApplicationController
 
   def update
     @activity_submission = ActivitySubmission.find(params[:id])
-    if @activity_submission.update(activity_submission_params)
-      redirect_to @activity_submission, notice: "Answer updated."
-    end
+    return unless @activity_submission.update(activity_submission_params)
+
+    redirect_to @activity_submission, notice: 'Answer updated.'
   end
 
   def destroy
     @activity_submission = ActivitySubmission.find(params[:id])
     @activity_submission.destroy
-    redirect_to activities_path, notice: "Answer deleted."
+    redirect_to activities_path, notice: 'Answer deleted.'
   end
 
   private

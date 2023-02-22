@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # To deliver this notification:
 #
 # ActivityNotification.with(post: @post).deliver_later(current_user)
@@ -22,7 +24,7 @@ class ActivityNotification < Noticed::Base
     @subject = @activity.subject
     "<strong>#{@activity.created_at.to_s(:short)}</strong> New Activity: #{@activity.name} has been posted in #{@subject.name}.".html_safe
   end
-  #
+
   def url
     subject_activities_path(params[:activity])
   end

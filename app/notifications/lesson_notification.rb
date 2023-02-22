@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # To deliver this notification:
 #
 # LessonNotification.with(post: @post).deliver_later(current_user)
@@ -20,9 +22,9 @@ class LessonNotification < Noticed::Base
   def message
     @lesson = params[:lesson]
     @subject = @lesson.subject
-   "<strong>#{@lesson.created_at.to_s(:short)}</strong> New Lesson: #{@lesson.name} has been posted in #{@subject.name}.".html_safe
+    "<strong>#{@lesson.created_at.to_s(:short)}</strong> New Lesson: #{@lesson.name} has been posted in #{@subject.name}.".html_safe
   end
-  #
+
   def url
     subject_lessons_path(params[:lesson])
   end
