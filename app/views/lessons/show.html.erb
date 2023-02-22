@@ -1,12 +1,13 @@
 <div class="container">
-  <div class="card">
+  <div class="card border-0">
     <div class="card-body">
-      <h5 class="card-title text-center"><%= @lesson.name %></h5>
-      <p class="card-text"><%= @lesson.description %></p>
-      <br>
+      <h5 class="card-title text-center mb-4"><%= @lesson.name %></h5>
+      <p class="card-text lead mb-4"><%= @lesson.description %></p>
       <% if @lesson.file.attached? %>
         <%= render partial: "file_viewer", locals: { file_url: rails_blob_url(@lesson.file), file_content_type: @lesson.file.content_type } %>
-        <%= link_to "Download", rails_blob_path(@lesson.file, disposition: "attachment"), class: "btn btn-primary btn-sm mt-3", download: true %>
+        <div class="d-grid gap-2 mt-4">
+          <%= link_to "Download", rails_blob_path(@lesson.file, disposition: "attachment"), class: "btn btn-primary btn-lg", download: true %>
+        </div>
       <% else %>
         <p class="card-text">No file attached</p>
       <% end %>
