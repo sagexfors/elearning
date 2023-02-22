@@ -1,31 +1,40 @@
 <div class="container">
-  <h5 class="text-center">Student Submissions</h5>
   <% if current_user.student? %>
     <% unless @answer %>
       <%= render partial: "activity_submissions/form", locals: { activity: @activity } %>
     <% else %>
       <p>You have already submitted an answer. Click <%= link_to "here", @answer%> to view.</p>
     <% end %>
-  <% else %>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Email</th>
-          <th>Title</th>
-          <th>Description</th>
-          <th>File</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @answers.each do |answer| %>
+  <% elsif current_user.teacher? || current_user.admin? %>
+    <h5 class="text-center">Student Submissions</h5>
+    <% if @answers.present? %>
+      <table class="table table-striped">
+        <thead>
           <tr>
-            <td><%= answer.student.email %></td>
-            <td><%= answer.title %></td>
-            <td><%= answer.description %></td>
-            <td>   <%= link_to "Download", rails_blob_path(answer.file, disposition: "attachment"), class: "btn btn-success btn-sm", download: true %></td>
+            <th>Email</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>File</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @answers.each do |answer| %>
+            <tr>
+              <td><%= answer.student.email %></td>
+              <td><%= answer.title %></td>
+              <td><%= answer.description %></td>
+              <td>   <%= link_to "Download", rails_blob_path(answer.file, disposition: "attachment"), class: "btn btn-success btn-sm", download: true %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p></p>
+      <div class="container text-center">
+        <div class="my-5">
+          <h3>No submissions yet.</h3>
+        </div>
+      </div>
+    <% end %>
   <% end %>
 </div>
