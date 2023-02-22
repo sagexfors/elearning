@@ -9,7 +9,7 @@
 <!-- Nav Item - Dashboard -->
 <li class="nav-item active">
   <%= link_to dashboards_path, class: "nav-link" do %>
-    <i class="bi bi-speedometer2"></i>
+    <i class="bi bi-layout-text-sidebar-reverse"></i>
     <span>Dashboard</span>
   <% end %>
 </li>
@@ -63,7 +63,12 @@
     <% end %>
   </li>
 <% end %>
-<%=button_to "Logout", destroy_user_session_path, method: :delete, class: "btn nav-item text-light"%>
+<li class="nav-item">
+  <%=button_to destroy_user_session_path, method: :delete, class: "btn nav-item text-light btn-sm" do %>
+    <i class="bi bi-box-arrow-left"></i>
+    <span>Logout</span>
+  <% end %>
+</li>
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
 </ul>
