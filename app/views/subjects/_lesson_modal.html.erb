@@ -1,0 +1,13 @@
+<div class="modal fade" id="newLessonModal" tabindex="-1" aria-labelledby="newLessonModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="newLessonModalLabel">New Lesson:</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= render "lessons/form", subject: @subject%>
+      </div>
+    </div>
+  </div>
+</div>
