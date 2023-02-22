@@ -1,6 +1,7 @@
 <div class="container">
   <% if current_user.student? %>
-    <% unless @answer %>
+    <% @answer = @activity.activity_submissions.find_by(user_id: current_user.id) %>
+    <% unless @answer.present? %>
       <%= render partial: "activity_submissions/form", locals: { activity: @activity } %>
     <% else %>
       <p>You have already submitted an answer. Click <%= link_to "here", @answer%> to view.</p>
