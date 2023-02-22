@@ -13,7 +13,7 @@
           <th>Email</th>
           <th>Title</th>
           <th>Description</th>
-          <th>URL</th>
+          <th>File</th>
         </tr>
       </thead>
       <tbody>
@@ -22,7 +22,7 @@
             <td><%= answer.student.email %></td>
             <td><%= answer.title %></td>
             <td><%= answer.description %></td>
-            <td><%= link_to answer.url, answer.url, target: '_blank' %></td>
+            <td>   <%= link_to "Download", rails_blob_path(answer.file, disposition: "attachment"), class: "btn btn-success btn-sm", download: true %></td>
           </tr>
         <% end %>
       </tbody>
