@@ -4,7 +4,7 @@
       <h5 class="card-title text-center mb-4"><%= @lesson.name %></h5>
       <p class="card-text lead mb-4"><%= @lesson.description %></p>
       <% if @lesson.file.attached? %>
-        <%= render partial: "file_viewer", locals: { file_url: rails_blob_url(@lesson.file), file_content_type: @lesson.file.content_type } %>
+        <%= render partial: "shared/file_viewer", locals: { file_url: rails_blob_url(@lesson.file), file_content_type: @lesson.file.content_type } %>
         <div class="d-grid gap-2 mt-4">
           <%= link_to "Download", rails_blob_path(@lesson.file, disposition: "attachment"), class: "btn btn-primary btn-lg", download: true %>
         </div>

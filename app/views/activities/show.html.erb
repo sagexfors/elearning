@@ -1,41 +1,18 @@
-<div class="col-12 col-md-6 col-lg-4 mb-4">
-  <div class="card">
+<div class="container">
+  <div class="card border-0">
     <div class="card-body">
-      <div class="row">
-        <div class="col-8">
-          <h5 class="card-title"><%= @activity.name %></h5>
-          <p class="card-text"><%= @activity.description %></p>
+      <h5 class="card-title text-center mb-4"><%= @activity.name %></h5>
+      <p class="card-text lead mb-4"><%= @activity.description %></p>
+      <% if @activity.file.attached? %>
+        <%= render partial: "shared/file_viewer", locals: { file_url: rails_blob_url(@activity.file), file_content_type: @activity.file.content_type } %>
+        <div class="d-grid gap-2 mt-4">
+          <%= link_to "Download", rails_blob_path(@activity.file, disposition: "attachment"), class: "btn btn-primary btn-lg", download: true %>
         </div>
-      </div>
+      <% else %>
+        <p class="card-text">No file attached</p>
+      <% end %>
     </div>
   </div>
-  <% answer = ActivitySubmission.where(activity_id: @activity.id, user_id: current_user.id).first%>
-  <% if current_user.student? %>
-    <% unless answer %>
-      <%= render "activity_submissions/form", activity: @activity%>
-    <% else %>
-      <p>You have already submitted answer. Click <%= link_to "here", answer%> to view.</p>
-    <% end %>
-  <% else %>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Email</th>
-          <th>Title</th>
-          <th>Description</th>
-          <th>URL</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @answers.each do |answer| %>
-          <tr>
-            <td><%= answer.student.email %></td>
-            <td><%= answer.title %></td>
-            <td><%= answer.description %></td>
-            <td><%= link_to answer.url, answer.url, target: '_blank' %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% end %>
 </div>
+<br>
+<%= render partial: "activities/student_submission", locals: { activity: @activity } %>

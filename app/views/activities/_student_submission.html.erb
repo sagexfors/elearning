@@ -1,0 +1,31 @@
+<div class="container">
+  <h5 class="text-center">Student Submissions</h5>
+  <% if current_user.student? %>
+    <% unless @answer %>
+      <%= render partial: "activity_submissions/form", locals: { activity: @activity } %>
+    <% else %>
+      <p>You have already submitted an answer. Click <%= link_to "here", @answer%> to view.</p>
+    <% end %>
+  <% else %>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>URL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @answers.each do |answer| %>
+          <tr>
+            <td><%= answer.student.email %></td>
+            <td><%= answer.title %></td>
+            <td><%= answer.description %></td>
+            <td><%= link_to answer.url, answer.url, target: '_blank' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

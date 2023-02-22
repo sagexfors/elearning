@@ -43,7 +43,7 @@ class ActivitiesController < ApplicationController
   private
 
   def activity_params
-    params.require(:activity).permit(:name, :description)
+    params.require(:activity).permit(:name, :description, :file)
   end
 
   def set_subject
