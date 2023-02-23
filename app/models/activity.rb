@@ -31,4 +31,8 @@ class Activity < ApplicationRecord
 
     errors.add(:file, 'is too big')
   end
+
+  def to_s
+    name
+  end
 end

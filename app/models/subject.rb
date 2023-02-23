@@ -10,4 +10,8 @@ class Subject < ApplicationRecord
   belongs_to :user
   validates :name, presence: true, length: { minimum: 1 }
   validates :description, presence: true, length: { minimum: 3 }
+
+  def to_s
+    name
+  end
 end
