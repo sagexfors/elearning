@@ -13,6 +13,8 @@
         <thead>
           <tr>
             <th>Email</th>
+            <th>Subject</th>
+            <th>Activity</th>
             <th>Title</th>
             <th>Description</th>
             <th>File</th>
@@ -22,6 +24,8 @@
           <% @answers.each do |answer| %>
             <tr>
               <td><%= answer.student.email %></td>
+              <td><%= answer.activity.subject %></td>
+              <td><%= answer.activity %></td>
               <td><%= answer.title %></td>
               <td><%= answer.description %></td>
               <td>   <%= link_to "Download", rails_blob_path(answer.file, disposition: "attachment"), class: "btn btn-success btn-sm", download: true %></td>
