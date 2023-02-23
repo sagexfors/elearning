@@ -1,26 +1,21 @@
 <div class="container-fluid">
-  <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Subjects</h1>
   </div>
   <div class="row">
-    <% if @subjects.exists? %>
-      <% @subjects.each do |subject|%>
-        <%= render "subject", subject: subject%>
+    <% if @subjects.present? %>
+      <%= render @subjects%>
+    <% else %>
+      <div class="container">
+        <div class="alert alert-warning" role="alert">
+          No subjects found.
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
-<% end %>
-<% else %>
-  <div class="container">
-    <div class="alert alert-warning" role="alert">
-      No subjects found.
-    </div>
-  </div>
-<% end %>
-</div>
 </div>
 <br>
+<!-- New Subject Button--->
 <% unless current_user.student? %>
   <div class="container-fluid">
     <!-- Button trigger modal -->
