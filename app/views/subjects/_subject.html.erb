@@ -22,8 +22,8 @@
   <% if policy(subject).update? && policy(subject).destroy? %>
     <div class="col-auto">
       <div class="btn-group" role="group">
-        <%= button_to "Delete", subject, class: "btn btn-danger btn-md", method: :delete %>
-        <%= link_to "Edit", edit_subject_path(subject), class: "btn btn-secondary" %>
+        <%= button_to "Delete", subject, class: "btn btn-danger btn-sm", method: :delete %>
+        <%= link_to "Edit", edit_subject_path(subject), class: "btn btn-secondary btn-sm" %>
       </div>
     </div>
   <% end %>
