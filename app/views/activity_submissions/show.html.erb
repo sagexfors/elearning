@@ -1,16 +1,18 @@
-<div class="col-12 col-md-6 col-lg-4 mb-4">
-  <div class="card">
+<div class="container">
+  <div class="card shadow-sm">
     <div class="card-body">
-      <div class="row">
-        <div class="col-8">
-          <h5 class="card-title"><%=@activity_submission.title  %></h5>
-          <p class="card-text"><%= @activity_submission.description%></p>
-          <p class="card-text"><%= @activity_submission.file%></p>
-        </div>
+      <h5 class="card-title">Title: <%= @activity_submission.title %></h5>
+      <p class="card-text">Description: <%= @activity_submission.description %></p>
+      <div class="d-flex gap-2 mt-4">
+        <% if @activity_submission.file.attached? %>
+          <%= link_to rails_blob_path(@activity_submission.file, disposition: "attachment"), class: "btn btn-sm btn-outline-primary" do %>
+            <i class="bi bi-file-text"></i>
+            <span>Download</span>
+          <% end %>
+        <% end %>
+        <%= link_to "Edit", edit_activity_submission_path(@activity_submission), class: "btn btn-sm btn-outline-secondary" %>
+        <%= button_to "Delete", activity_submission_path(@activity_submission), method: :delete, class: "btn btn-sm btn-outline-danger", data: { confirm: "Are you sure you want to delete this submission?" } %>
       </div>
     </div>
   </div>
-  <br>
-  <%= link_to "Edit", edit_activity_submission_path(@activity_submission), class: "btn btn-secondary" %>
-  <%= button_to "Destroy", activity_submission_path(@activity_submission), method: :delete, class: "btn btn-danger" %>
 </div>
