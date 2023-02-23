@@ -3,7 +3,7 @@
   <% if subject.activities.exists? %>
     <% subject.activities.each do |activity|%>
       <div class="col-12 col-md-6 col-lg-4 mb-4">
-        <div class="card">
+        <div class="card shadow-sm">
           <div class="card-body">
             <h5 class="card-title"><%= link_to activity.name, subject_activity_path(activity.subject, activity) %></h5>
             <p class="card-text"><%= activity.description %></p>

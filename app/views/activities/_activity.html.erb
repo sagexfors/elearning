@@ -1,4 +1,4 @@
-<div class="card h-100">
+<div class="card h-100 shadow-sm">
   <div class="card-body">
     <h5 class="card-title"><%= link_to truncate(activity.name, length: 50), subject_activity_path(activity.subject, activity) %></h5>
     <p class="card-text"><%= truncate(activity.description, length: 100) %></p>
